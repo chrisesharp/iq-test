@@ -1,11 +1,8 @@
 import unittest
 
 def iq_test(string_of_numbers):
-    odd_numbers = [int(x)%2!=0 for x in string_of_numbers.split()]
-    odds = odd_numbers.count(True) == 1
-    if odds:
-        return odd_numbers.index(True) + 1
-    return odd_numbers.index(False) + 1
+    odds = [int(x)%2!=0 for x in string_of_numbers.split()]
+    return odds.index(True) + 1 if odds.count(True) == 1 else odds.index(False) + 1
 
 class IQTest(unittest.TestCase):
     def test_7_as_odd_one_out(self):
