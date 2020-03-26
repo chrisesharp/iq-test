@@ -2,8 +2,10 @@ import unittest
 
 def iq_test(string_of_numbers):
     odd_numbers = [int(x)%2!=0 for x in string_of_numbers.split()]
-    odd_position = odd_numbers.index(True) + 1
-    return odd_position
+    odds = odd_numbers.count(True) == 1
+    if odds:
+        return odd_numbers.index(True) + 1
+    return odd_numbers.index(False) + 1
 
 class IQTest(unittest.TestCase):
     def test_7_as_odd_one_out(self):
@@ -17,5 +19,8 @@ class IQTest(unittest.TestCase):
     
     def test_last_as_odd_one_out(self):
         self.assertEqual(3, iq_test("2 4 5"))
+    
+    def test_4_as_odd_one_out(self):
+        self.assertEqual(3, iq_test("1 3 4 5 7"))
     
 
